@@ -26,3 +26,14 @@ function handleInput(value) {
 }
 
 // suporte ao teclado
+document.addEventListener('keydown', (e) => {
+    if (!isNaN(e.key) || ['+','-','*','/','.'].includes(e.key)){
+        handleInput(e.key);
+    } else if (e.key === ' Enter') {
+        handleInput('=');
+    } else if (e.key === 'Backspace') {
+        display.innerText = display.innerText.slice(0, -1) || '0';
+    } else if (e.key.toLocaleLowerCase() === 'c') {
+        handleInput('C');
+    }
+})
